@@ -1,4 +1,5 @@
 /.phpintel/
 /resource/logs/
 /vendor/
+.env
 composer.lock

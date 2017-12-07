@@ -5,14 +5,22 @@ volumes:
     driver: local
 
 services:
-  slim:
+  api-app:
     image: php:7.1-alpine
     working_dir: /var/www
     command: php -S 0.0.0.0:8080 -t web index.php
     environment:
       docker: "true"
     ports:
-      - 8080:8080
+      - 8081:8080
     volumes:
       - .:/var/www
       - /resource/logs:/var/www/resource/logs
+  api-db:
+    image: postgres:9.6-alpine
+    environment:
+      - POSTGRES_USER=apidev
+      - POSTGRES_PASSWORD=password
+      - POSTGRES_DB=api_core
+    ports:
+      - "2356:5432"
