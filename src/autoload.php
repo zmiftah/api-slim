@@ -14,20 +14,26 @@ $dotenv->load();
 // Load configs
 $settings = require("{$basePath}/kernel/settings.php");
 $dependencies = require("{$basePath}/kernel/dependencies.php");
+$services = require("{$basePath}/kernel/services.php");
 
 // Instantiate the app
 $app = new Slim\App($settings);
+$container = $app->getContainer();
 
 // Set up dependencies
-$container = $app->getContainer();
-foreach ($dependencies as $key => $service) {
-	$container["$key"] = $service;
+foreach ($dependencies as $key => $dependency) {
+	$container["$key"] = $dependency;
 }
 
 // Register middleware
 
+// Register services
+foreach ($services as $key => $service) {
+	$container["$key"] = $service;
+}
+
 // Register routes
-require("{$basePath}/kernel/routes.php");
+require("{$basePath}/routes.php");
 
 // Run app
 $app->run();
