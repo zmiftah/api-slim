@@ -8,11 +8,11 @@ services:
   slim:
     image: php:7.1-alpine
     working_dir: /var/www
-    command: php -S 0.0.0.0:8080 -t public public/index.php
+    command: php -S 0.0.0.0:8080 -t web index.php
     environment:
       docker: "true"
     ports:
       - 8080:8080
     volumes:
       - .:/var/www
-      - logs:/var/www/logs
+      - /resource/logs:/var/www/resource/logs

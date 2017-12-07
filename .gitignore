@@ -1,4 +1,4 @@
+/.phpintel/
+/resource/logs/
 /vendor/
-/logs
-!/logs/README.md
 composer.lock
