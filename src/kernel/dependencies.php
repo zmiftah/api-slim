@@ -5,9 +5,10 @@ return [
   // database
   'db' => function($container) {
     $capsule = new Illuminate\Database\Capsule\Manager;
-    $capsule->addConnection($container['settings']['db']);
+    $capsule->addConnection($container['settings']['db'], 'default');
     $capsule->setAsGlobal();
     $capsule->bootEloquent();
+
     return $capsule;
   },
   // view renderer

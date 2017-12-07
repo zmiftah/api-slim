@@ -11,7 +11,7 @@ return [
     'determineRouteBeforeAppMiddleware' => false,
 
     'db' => [
-      'driver'    => 'postgres',
+      'driver'    => 'pgsql',
       'host'      => getenv('DB_HOST'),
       'database'  => getenv('DB_NAME'),
       'username'  => getenv('DB_USER'),

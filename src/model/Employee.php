@@ -14,7 +14,7 @@ class Employee extends Model
    *
    * @var string
    */
-  protected $connection = 'db';
+  protected $connection = 'default';
 	/**
    * The table associated with the model.
    *

@@ -32,6 +32,12 @@ foreach ($services as $key => $service) {
 	$container["$key"] = $service;
 }
 
+// Set up Eloquent ConnectionResolver
+$resolver = new Illuminate\Database\ConnectionResolver();
+$resolver->addConnection('default', $container['db']->getConnection());
+$resolver->setDefaultConnection('default');
+Illuminate\Database\Eloquent\Model::setConnectionResolver($resolver);
+
 // Register routes
 require("{$basePath}/routes.php");
 
