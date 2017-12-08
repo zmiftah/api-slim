@@ -7,8 +7,13 @@ use zmdev\app\model\Employee;
 
 class EmployeeService implements ServiceInterface
 {
-	public function getAll()
+	public function findAll()
 	{
-		return Employee::all();
+		return Employee::limit(100)->get();
+	}
+
+	public function findOne(int $id)
+	{
+		return Employee::where('id', $id)->get();
 	}
 }

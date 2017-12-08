@@ -2,20 +2,22 @@
 
 use Slim\Http\Request;
 use Slim\Http\Response;
+use zmdev\app\responder\employee\IndexAction;
+use zmdev\app\responder\employee\ViewAction;
+
+// Responders
+
+$container = $app->getContainer();
+$container[IndexAction::class] = function($container) {
+  return new IndexAction($container, $container['employee_service']);
+};
+$container[ViewAction::class] = function($container) {
+  return new ViewAction($container, $container['employee_service']);
+};
 
 // Routes
 
-$app->get('/employees', function (Request $request, Response $response, array $args) use ($app) {
-  // Sample log message
-  // $this->logger->info("Slim-Skeleton '/' route");
-
-  // var_dump($app->getContainer()['db']);
-
-  // $table = $app->getContainer()['db']->table('sdm_employee');
-  // var_dump($table->first());
-
-  $employees = $this->employee_service->getAll();
-
-  // Render response
-  return $response->withJson($employees);
+$app->group('/employee', function () {
+  $this->get('', IndexAction::class);
+  $this->get('/{id}', ViewAction::class);
 });

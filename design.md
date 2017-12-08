@@ -31,3 +31,13 @@ Notes
 3. Database with Eloquent
 4. Action-Domain-Responder
 5. Add Migration
+
+Links
+===
+http://pmjones.io/adr/
+https://www.slimframework.com/docs/cookbook/action-domain-responder.html
+https://www.slimframework.com/2013/03/21/slim-and-laravel-eloquent-orm.html
+https://fractal.thephpleague.com/resources/
+https://github.com/afshinpersian/afshlim_framework
+https://github.com/luchisds/api-um
+https://github.com/zkavtaskin/Domain-Driven-Design-Example

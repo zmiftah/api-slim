@@ -1,13 +1,14 @@
 <?php
 
-namespace zmdev\app\responder;
+namespace zmdev\app\responder\employee;
 
 use Interop\Container\ContainerInterface;
+use Slim\Http\Request;
 use Slim\Http\Response;
-use zmdev\app\base\ResponderInterface;
+use zmdev\app\base\ActionInterface;
 use zmdev\app\base\ServiceInterface;
 
-class EmployeeResponder implements ResponderInterface
+class ViewAction implements ActionInterface
 {
 	protected $container;
 	protected $service;
@@ -18,15 +19,9 @@ class EmployeeResponder implements ResponderInterface
 		$this->service = $service;
 	}
 
-	public function index(Response $response)
+	public function __invoke(Request $request, Response $response, array $args)
 	{
-		$employees = $this->service->findAll();
-		return $response->withJson($employees);
-	}
-
-	public function view(Response $response, int $id)
-	{
-		$employee = $this->service->findOne($id);
+		$employee = $this->service->findOne((int)$args['id']);
 		return $response->withJson($employee);
 	}
 }
