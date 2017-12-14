@@ -31,6 +31,8 @@ Notes
 3. Database with Eloquent
 4. Action-Domain-Responder
 5. Add Migration
+6. Transform layer using fractal
+7. Login route, Model ApiKey
 
 Links
 ===
